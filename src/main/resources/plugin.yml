@@ -1,0 +1,7 @@
+name: DetectBrand
+version: ${project.version}
+main: com.github.eighty88.detectbrand.DetectBrand
+api-version: 1.16
+authors: [ eight_y_88 ]
+description: Detect Brand
+website: https://github.com/Palpunte-Union/
