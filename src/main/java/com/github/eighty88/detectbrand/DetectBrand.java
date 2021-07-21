@@ -39,37 +39,7 @@ public final class DetectBrand extends JavaPlugin implements Listener, PluginMes
             if (!ClientNameMap.containsKey(player.getUniqueId())) {
                 ClientNameMap.put(player.getUniqueId(), brand);
             }
-        } else if (channel.equalsIgnoreCase("LOLIMAHCKER")) {
-            Bukkit.broadcastMessage(player.getName() + " is using Vape!");
-            ClientNameMap.put(player.getUniqueId(), "VAPE");
-        } else if (channel.equalsIgnoreCase("BungeeCord")) {
-            ByteArrayDataInput input = ByteStreams.newDataInput(value);
-            if ("ForgeMods".equals(input.readUTF())) {
-                String json = input.readUTF();
-                try {
-                    Map<String, String> mods = (Map<String, String>) new JSONParser().parse(json);
-                    StringBuilder builder = new StringBuilder(player.getName()).append("'s Mods: ");
-                    for(String str: mods.keySet()) {
-                        builder.append(str).append("-").append(mods.get(str));
-                    }
-                    getLogger().info(builder.toString());
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-            try {
-                DataInputStream dataInputStream = new DataInputStream(new ByteArrayInputStream(value));
-                if (dataInputStream.readUTF().equals("heartbeat")) {
-                    if ("true".equals(dataInputStream.readUTF())) {
-                        ClientNameMap.put(player.getUniqueId(), "Badlion");
-                    }
-                }
-            } catch (IOException ignored) {
-
-            }
-
         }
-
     }
 
     @EventHandler
